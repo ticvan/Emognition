@@ -9,6 +9,9 @@
   integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
   crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.scss">
+  <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
   <title>Emognition</title>
 </head>
   <body>
@@ -21,12 +24,15 @@
       <br />
       <div class="row">
         <div class="col-lg-12 text-center">
-          <figure class="col-5 mx-4 figure">
-            <img src="assets/img/Download.png" id="faceImg" class="shadow col-12 figure-img img-fluid rounded-3" alt="...">
+          <figure class="col-5 mx-4 figure" height="535" width="535">
+            <img src="assets/img/Download.png" id="output" class="shadow col-12 figure-img img-fluid rounded-3" >
             <figcaption class="figure-caption">facecam or uploaded img figure</figcaption>
           </figure>
           <figure class="col-5 mx-4 figure">
-            <img src="assets/img/Download.png" class="shadow col-12 figure-img img-fluid rounded-3" alt="...">
+
+            <div class="responsive-video shadow col-12 figure-img img-fluid rounded-3">
+              <iframe src="https://www.youtube.com/embed/EIm4HvDgQCM" frameborder="0" height="300" width="100%" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
             <figcaption class="figure-caption">youtube video shown after api recognized face</figcaption>
           </figure>
         </div>
@@ -34,8 +40,9 @@
       <br />
       <div class="row">
         <div class="col-lg-12 text-center">
-          <button type="button" class="shadow-lg col-5 mx-4 my-4 btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#downlaodModal" >Download</button>
-          <button type="button" class="shadow-lg col-5 mx-4 my-4 btn btn-dark btn-lg">Upload</button>
+          <button type="button" class="shadow col-5 mx-4 my-4 btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#downlaodModal">Download</button>
+          <input id="fileInput" type="file"  class="btn btn-light" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+          <button id="uploadBtn" type="button" class="shadow col-5 mx-4 my-4 btn btn-light btn-lg" >Upload</button>
         </div>
       </div>
     </div>
@@ -77,10 +84,26 @@
             <div class="col-lg-12 text-center">  
               <input type="text" class="form-control" id="pictureName" placeholder="name" aria-label="name">
             </div>
-          </div>
+          </div>           
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" onclick="downloadImage()">download</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">options</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <input type="file" class="my-pond" name="filepond" accept="image/png, image/jpeg, image/gif image/webm" ondrag="loadFile(event)"/>
+
+          <p><input type="file"  class="btn btn-light" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+          <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+          <p><img id="output" width="200" /></p>
         </div>
       </div>
     </div>
@@ -89,5 +112,34 @@
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" 
   crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="assets/js/script.js"></script>
-</html>
+  <script src="assets/js/index.js"></script>
+<!-- include jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<!-- include FilePond library -->
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+<!-- include FilePond plugins -->
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+
+<!-- include FilePond jQuery adapter -->
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
+<script>
+  $(function(){
+
+    // First register any plugins
+    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
+
+    // Turn input element into a pond
+    $('.my-pond').filepond();
+
+    // Set allowMultiple property to true
+    $('.my-pond').filepond('allowMultiple', false);
+  
+    // Listen for addfile event
+    $('.my-pond').on('FilePond:addfile', function(e) {
+      loadFile(e);
+    });  
+  });
+</script>  </html>
