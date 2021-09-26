@@ -7,8 +7,7 @@
     imageCopyResampled($smallImage,$bigImage,0,0,($bigWidth-$bigHeight)/2,0,$smallWidth,$smallWidth,$bigHeight,$bigHeight);
     imageWebp($smallImage,'manipulated.webp', 8);
 
-    echo '
-    <center>
+    echo '<center>
         <figure>
             <img src="original.jpg" alt="jpg image">
             <figcaption>Original image jpg</figcaption>
@@ -17,9 +16,8 @@
             <img src="manipulated.webp" alt="manipulated image">
             <figcaption>New 300X300 image</figcaption>
         </figure>
-    </center>
-    ';
+    </center>';
+
     imageDestroy($bigImage);
     imageDestroy($smallImage);
-
 ?>
