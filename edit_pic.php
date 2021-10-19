@@ -7,23 +7,71 @@
     function test_func($box_pos_x, $box_pos_y, $box_width, $box_height, $emotion, $pictureSource)
     {
         list($width, $height) = getimagesize($pictureSource);
+        $png = imagecreatefrompng('assets/img/Emotions/'. $emotion .'.png');
+
+        // After the last point is naturally the format.
+        $dots = explode(".", $pictureSource);
+
+        // We assign the last data of $dots to the variable $type.
+        $type = $dots[(count($dots)-1)];
         
-        echo $pictureSource;
-        // // return $test_value . 'pls work man';
-        $png = imagecreatefrompng('assets/img/Emotions/'. $emotion. '.png');
-        // list($newwidth, $newheight) = getimagesize('assets/img/Emotions/'. $emotion. '.png');
-        // $png = imagecreatefrompng('assets/img/Emotions/happy.png');
-        list($newwidth, $newheight) = getimagesize('assets/img/Emotions/happy.png');
-        $webp = imagecreatefromjpeg($pictureSource);
+
+        switch($type)
+        {
+            case 'jpeg':
+                $img = imagecreatefromjpeg($pictureSource);
+                break;
+            
+            case 'png':
+                $img = imagecreatefrompng($pictureSource);
+                break;
+
+            case 'gif':
+                $img = imagecreatefromgif($pictureSource);
+                break;
+            
+            case 'webp':
+                $img = imagecreatefromwebp($pictureSource);
+                break;
+        }
+
+            
+
+        $exif = exif_read_data($pictureSource);
+        if ($img && $exif && isset($exif['Orientation']))
+        {
+            $ort = $exif['Orientation'];
+
+            if ($ort == 6 || $ort == 5)
+                $img = imagerotate($img, 270, null);
+            if ($ort == 3 || $ort == 4)
+                $img = imagerotate($img, 180, null);
+            if ($ort == 8 || $ort == 7)
+                $img = imagerotate($img, 90, null);
+
+            if ($ort == 5 || $ort == 4 || $ort == 7)
+                imageflip($img, IMG_FLIP_HORIZONTAL);
+        }
+
         
-        $cutted_emoji = imagecreateTrueColor($box_width, $box_height);
+        list($oldwidth, $oldheight) = getimagesize($pictureSource);
+        
+        // Grösse von HTML Bild nehmen
+        $width = 535;
+        $height = 535;
+
+        list($newwidth, $newheight) = getimagesize('assets/img/Emotions/'. $emotion. '.png');
+        
+        $cutted_pic = imagecreateTrueColor($width, $height);
+        imagecopyresampled($cutted_pic, $img, 0,0,0,0, $width, $height, $oldwidth, $oldheight);
+        imagepng($cutted_pic, 'assets/img/output_test.png');
+
+        $cutted_emoji = imagecreate($box_width, $box_height);
         imagecopyresampled($cutted_emoji, $png, 0,0, 0, 0, $box_width, $box_height, $newwidth, $newheight);
 
-        // $out = imagecreatetruecolor($newwidth, $newheight);
-        // imagecopyresampled($out, $webp, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-        imagecopy($webp, $cutted_emoji, $box_pos_y, $box_pos_x, 0, 0, $box_width, $box_height);
+        imagecopy($cutted_pic, $cutted_emoji, $box_pos_x , $box_pos_y, 0, 0, $box_width, $box_height);
 
-        imagepng($webp, 'assets/img/out_new.png', 8);
+        imagepng($cutted_pic, 'assets/img/out_new.png', 8);
         
         return $emotion;
     }

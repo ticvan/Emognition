@@ -51,11 +51,11 @@ async function detectPic2()
 
             canvas2 = faceapi.createCanvasFromMedia(imageDet);
             faceapi.matchDimensions(canvas2, displaySize);
-            var ctx = canvas2.getContext("2d")
-            ctx.rect(detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height);
-            ctx.fill();
+            // var ctx = canvas2.getContext("2d")
+            // ctx.rect(detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height);
+            // ctx.fill();
             b.append(canvas2);
-            console.log(imagesrc);
+            console.log(expression);
             jQuery.ajax({
                 type: "POST",
                 url: '../Emognition/edit_pic.php',
