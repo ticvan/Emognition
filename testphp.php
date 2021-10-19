@@ -34,7 +34,7 @@
           </div>             -->
           <div id="Webcam" class="col-12 d-flex justify-content-center">
               <!-- <video id="video" width="720" height="500" autoplay muted></video> -->
-              <img id="temp_image" src="assets/img/Happy_Face.webp" alt="Temp Bild" width="720" height="500">
+              <img id="temp_image" src="" alt="Temp Bild" width="720" height="500">
               <!-- <img id="temp2" alt="Temp Bild" width="720" height="500"> -->
             </div>     
           <figcaption class="figure-caption">facecam or uploaded img figure</figcaption>

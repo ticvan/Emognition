@@ -1,30 +1,31 @@
+Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('assets/models'),
+]).then(detectPic2());
 
-
+let imagesrc = "";
 function detectPic(image_name) 
 {
 
+    imagesrc = "assets/img/" + image_name;
     document.getElementById("temp_image").src="assets/img/" + image_name;
     // var source_image = $('#temp_image').attr('src') ;
     // var new_source = $('#temp_image').attr('src').replace(source_image, 'assets/img/' + image_name);
     // $("#temp2").attr("src", new_source);
 
     // document.getElementById("temp_image").src="assets/img/" + image_name;
+}
 
-    Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
-        faceapi.nets.faceExpressionNet.loadFromUri('assets/models')
-    ]).then(detectPic2());
 
         
 
-}
 
-function detectPic2()
+async function detectPic2()
 {
     const imageDet = document.getElementById("temp_image");
-    var canvas = faceapi.createCanvasFromMedia(imageDet);
+    var canvas = await faceapi.createCanvasFromMedia(imageDet);
 
     const b = document.getElementById("Webcam");
     b.append(canvas);
@@ -54,12 +55,12 @@ function detectPic2()
             ctx.rect(detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height);
             ctx.fill();
             b.append(canvas2);
-
+            console.log(imagesrc);
             jQuery.ajax({
                 type: "POST",
                 url: '../Emognition/edit_pic.php',
                 dataType: 'json',
-                data: { functionname: 'test_func', arguments: [detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height, expression] },
+                data: { functionname: 'test_func', arguments: [detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height, expression, imagesrc] },
 
                 success: function (obj, textstatus) {
                     if (!('error' in obj)) {

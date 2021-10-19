@@ -4,17 +4,17 @@
 
     $aResult = array();
 
-    function test_func($box_pos_x, $box_pos_y, $box_width, $box_height, $emotion)
+    function test_func($box_pos_x, $box_pos_y, $box_width, $box_height, $emotion, $pictureSource)
     {
-        list($width, $height) = getimagesize('assets/img/Happy_Face.webp');
+        list($width, $height) = getimagesize($pictureSource);
         
-
+        echo $pictureSource;
         // // return $test_value . 'pls work man';
         $png = imagecreatefrompng('assets/img/Emotions/'. $emotion. '.png');
         // list($newwidth, $newheight) = getimagesize('assets/img/Emotions/'. $emotion. '.png');
         // $png = imagecreatefrompng('assets/img/Emotions/happy.png');
         list($newwidth, $newheight) = getimagesize('assets/img/Emotions/happy.png');
-        $webp = imagecreatefromwebp('assets/img/Happy_Face.webp');
+        $webp = imagecreatefromjpeg($pictureSource);
         
         $cutted_emoji = imagecreateTrueColor($box_width, $box_height);
         imagecopyresampled($cutted_emoji, $png, 0,0, 0, 0, $box_width, $box_height, $newwidth, $newheight);
