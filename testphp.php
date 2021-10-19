@@ -51,8 +51,7 @@
       <br />
       <div class="row">
         <div class="col-lg-12 text-center">
-        <iframe name="votar" style="display:none;"></iframe>
-        <form action="<?=$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data" target="votar">
+        <form action="<?=$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
           Select image to upload:
           <input type="file" name="fileToUpload" id="fileToUpload">
           <input type="submit" value="Upload und analisieren" name="uploadImage">
@@ -173,14 +172,24 @@
 <!-- include FilePond jQuery adapter -->
 <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
 
-<!-- <script src="assets/js/image_detection.js"></script> -->
+<script src="assets/js/image_detection.js"></script>
 <script>
-  function detectPic(image_name)
-  {
-    console.log(image_name);
-    document.getElementById("temp_image").src="assets/img/" + image_name;
-  }
-     
+  // function detectPic(image_name)
+  // {
+  //   console.log(image_name);
+  //   document.getElementById("temp_image").src="assets/img/" + image_name;
+  // }
+  
+
+  $('#submit').click(function() {
+    $.ajax({
+        url: '',
+        type: 'POST',
+        success: function(msg) {
+            alert('Email Sent');
+        }               
+    });
+});
 </script>
 <?php
       $target_dir = "./assets/img/";
