@@ -21,17 +21,17 @@
             case 'jpeg':
                 $img = imagecreatefromjpeg($pictureSource);
                 break;
-            
             case 'png':
                 $img = imagecreatefrompng($pictureSource);
                 break;
-
             case 'gif':
                 $img = imagecreatefromgif($pictureSource);
                 break;
-            
             case 'webp':
                 $img = imagecreatefromwebp($pictureSource);
+                break;
+            default:
+                $img = imagecreatefromfile($pictureSource);
                 break;
         }
 
