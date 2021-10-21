@@ -8,14 +8,7 @@ const screenshotButton = document.getElementById("btnScreenshot");
 //     faceapi.nets.faceExpressionNet.loadFromUri('assets/models')
 //   ]).then(startVideo)
 
-// function startVideo() 
-// {
-//     navigator.getUserMedia(
-//       { video: {} },
-//       stream => video.srcObject = stream,
-//       err => console.error(err)
-//     )
-// }
+
 
 function detectPic()
 {

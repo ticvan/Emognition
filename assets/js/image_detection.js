@@ -18,12 +18,9 @@ function detectPic(image_name)
     // document.getElementById("temp_image").src="assets/img/" + image_name;
 }
 
-
-        
-
-
 async function detectPic2()
 {
+    startVideo();
     const imageDet = document.getElementById("temp_image");
     var canvas = await faceapi.createCanvasFromMedia(imageDet);
 
@@ -97,4 +94,13 @@ function sortingExpressions(a, b)
     else {
         return (a[1] > b[1]) ? -1 : 1;
     }
+}
+
+function startVideo() 
+{
+    navigator.getUserMedia(
+      { video: {} },
+      stream => video.srcObject = stream,
+      err => console.error(err)
+    )
 }
