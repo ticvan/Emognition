@@ -60,9 +60,11 @@ async function detectPic2()
                 data: { functionname: 'test_func', arguments: [detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height, expression, imagesrc] },
 
                 success: function (obj, textstatus) {
-                    if (!('error' in obj)) {
+                    if (!('error' in obj)) 
+                    {
                         var yourVariable = obj.result;
-                        console.log(obj.result);
+                        console.log(yourVariable);
+                        document.getElementById("temp_image").src=yourVariable;
                     }
                     else 
                     {
