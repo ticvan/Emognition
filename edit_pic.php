@@ -75,7 +75,7 @@
 
         $current_date = date("H-i-s");
 
-        $manipulated_pic_path = 'assets/img/output/' . $pictureSource . '_' . $current_date . '_manipulated.png';
+        $manipulated_pic_path = 'assets/img/output/' . pathinfo($pictureSource, PATHINFO_FILENAME) . '_' . $current_date . '_manipulated.png';
 
         imagepng($cutted_pic, $manipulated_pic_path, 8);
         
