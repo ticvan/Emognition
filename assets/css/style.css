@@ -5,8 +5,36 @@ body {
 img {
   width: 535px;
   height: 535px;
+  border-radius: 15px;
 }
 
+iframe{
+  width: 535px;
+  height: 535px;
+  border-radius: 15px;
+  background-color: transparent;
+}
 canvas {
   position: absolute;
+}
+
+.section-team {
+	font-family: "Poppins", sans-serif;
+	padding: 80px 0;
+}
+
+.section-team .header-section {
+	margin-bottom: 10px;
+}
+
+.section-team .header-section .small-title {
+    margin-bottom: 25px;
+	font-size: 16px;
+    font-weight: 500;
+    color: #3e64ff;
+}
+
+.section-team .header-section .title {
+    font-weight: 700;
+    font-size: 5vh;
 }
