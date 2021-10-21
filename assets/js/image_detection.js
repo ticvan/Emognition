@@ -36,9 +36,6 @@ async function detectPic2()
             new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height)
-        faceapi.draw.drawDetections(canvas, resizedDetections)
-        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections, { drawLines: false })
-        faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
         
         var expression = detectExpression(resizedDetections[0].expressions);
         var detectionBox = resizedDetections[0].detection.box;
