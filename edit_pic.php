@@ -31,6 +31,7 @@
                 $img = imagecreatefromwebp($pictureSource);
                 break;
             default:
+            // TODO => fix JPG
                 $img = imagecreatefromfile($pictureSource);
                 break;
         }

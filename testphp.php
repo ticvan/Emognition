@@ -29,16 +29,21 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <figure class="col-5 mx-4 figure" height="535" width="535">
-          <!-- <div id="Webcam" class="col-12 d-flex justify-content-center">
-              <video id="video" width="720" height="500" autoplay muted></video>
-          </div>             -->
-          <div id="Webcam" class="col-12 d-flex justify-content-center">
-              <video id="video" width="720" height="500" autoplay muted></video>
-              <img id="temp_image" src="" alt="Temp Bild" width="720" height="500">
+            <!-- <div id="Webcam" class="col-12 d-flex justify-content-center">
+              </div>             -->
+              <div id="Webcam" class="col-12 d-flex justify-content-center">
+                <!-- <video id="video" width="720" height="500" autoplay muted></video> -->
+                <div id="detctionVariant">
+                  
+                  <!-- <video id="video" style="background-color: #000;" width="720" height="500" autoplay muted></video>
+                  <img id="temp_image" src="" alt="Temp Bild" width="720" height="500"> -->
+                </div>
               <!-- <img id="temp2" alt="Temp Bild" width="720" height="500"> -->
             </div>     
           <figcaption class="figure-caption">facecam or uploaded img figure</figcaption>
           </figure>
+
+          <!-- TODO => Add radio button for face or image for  id="userSelection" -->
           <figure class="col-5 mx-4 figure">
 
             <div class="responsive-video shadow col-12 figure-img img-fluid rounded-3">
@@ -65,7 +70,7 @@
 
     <!-- Faceapi Implementation -->
 
-    <div class="container">
+    <!-- <div class="container">
 
   
       <div class="row">
@@ -84,7 +89,7 @@
               <img id="img">
           </div>
       </div>
-  </div>
+  </div> -->
 
 
 
@@ -174,11 +179,6 @@
 
 <script src="assets/js/image_detection.js"></script>
 <script>
-  // function detectPic(image_name)
-  // {
-  //   console.log(image_name);
-  //   document.getElementById("temp_image").src="assets/img/" + image_name;
-  // }
   
 
   $('#submit').click(function() {
