@@ -72,8 +72,14 @@
         imagecopy($cutted_pic, $cutted_emoji, $box_pos_x , $box_pos_y, 0, 0, $box_width, $box_height);
 
         imagepng($cutted_pic, 'assets/img/out_new.png', 8);
+
+        $current_date = date("H-i-s");
+
+        $manipulated_pic_path = 'assets/img/output/' . $pictureSource . '_' . $current_date . '_manipulated.png';
+
+        imagepng($cutted_pic, $manipulated_pic_path, 8);
         
-        return $emotion;
+        return $manipulated_pic_path;
     }
 
     if( !isset($_POST['functionname']) ) { $aResult['error'] = 'No function name!'; }
