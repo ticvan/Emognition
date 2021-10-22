@@ -3,6 +3,6 @@ var loadFile = function(event) {
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
 
-document.getElementById('uploadBtn').addEventListener('click', () => {
-  document.getElementById('fileInput').click()
-})
+// document.getElementById('uploadBtn').addEventListener('click', () => {
+//   document.getElementById('fileInput').click()
+// })

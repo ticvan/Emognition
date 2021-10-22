@@ -72,8 +72,6 @@
 
         imagecopy($cutted_pic, $cutted_emoji, $box_pos_x , $box_pos_y, 0, 0, $box_width, $box_height);
 
-        imagepng($cutted_pic, 'assets/img/out_new.png', 8);
-
         $current_date = date("d.m.y");
         $current_time = date("H:i:s");
 

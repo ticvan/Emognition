@@ -12,7 +12,7 @@ let imageDetectionSelection = "";
 function detectPic(image_name) {
 
     imagesrc = "assets/img/" + image_name;
-    document.getElementById("temp_image").src = "assets/img/" + image_name;
+    document.getElementById("temp_image").src = imagesrc;
     // var source_image = $('#temp_image').attr('src') ;
     // var new_source = $('#temp_image').attr('src').replace(source_image, 'assets/img/' + image_name);
     // $("#temp2").attr("src", new_source);
@@ -60,6 +60,7 @@ async function detectPic2() {
                     if (!('error' in obj)) {
                         var yourVariable = obj.result;
                         console.log(yourVariable);
+                        // $('#temp_image').attr(src, yourVariable);
                         document.getElementById("temp_image").src = yourVariable;
                     }
                     else {
