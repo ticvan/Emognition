@@ -63,6 +63,7 @@ async function detectPic2() {
                         console.log(yourVariable);
                         // $('#temp_image').attr(src, yourVariable);
                         $('img').attr("src", yourVariable);
+                        $('a').attr("href", yourVariable)
                     }
                     else {
                         console.log(obj.error);

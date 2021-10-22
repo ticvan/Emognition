@@ -75,9 +75,9 @@
         $current_date = date("d.m.y");
         $current_time = date("H:i:s");
 
-        $manipulated_pic_path = 'assets/img/output/' . pathinfo($pictureSource, PATHINFO_FILENAME) . '_' . $current_date . '_' . $current_time . '_manipulated.png';
+        $manipulated_pic_path = 'assets/img/output/' . pathinfo($pictureSource, PATHINFO_FILENAME) . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
 
-        imagepng($cutted_pic, $manipulated_pic_path, 8);
+        imagewebp($cutted_pic, $manipulated_pic_path);
         
         return $manipulated_pic_path;
     }
