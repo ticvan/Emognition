@@ -14,6 +14,7 @@
   <script src="assets/js/face-api.min.js"></script>
   <!-- <script defer src="assets/js/face_detection.js"></script> -->
 
+  
   <title>Emognition</title>
 </head>
   <body>
@@ -75,7 +76,7 @@
     <div class="container my-5">
       <div class="form-group my-2 shadow">
             <form class="gap-2" action="" method="post" enctype="multipart/form-data">
-              <input type="file" name="fileToUpload_new" id="fileToUpload_new" class="form-control gap-2">
+              <input type="file" name="fileToUpload_new" id="fileToUpload_new" class="form-control gap-2" accept=".png, .jpeg, .gif, webp">
             </form>
       </div>
       <div class="row">
@@ -86,7 +87,7 @@
           <a type="button" class="btn shadow col-12 btn-success btn-block py-3" href="" id="downloadPic" download="Mood.webp">Downlaod</a>
         </div>
         <div class="col-lg-4 my-2">
-          <input type="submit" class="btn shadow col-12 btn-dark btn-block py-3" value="Upload und analisieren" name="uploadImage">
+          <input type="submit" class="btn shadow col-12 btn-dark btn-block py-3" value="Analyse beginnen" name="uploadImage" id='submit_new'>
         </div>
       </div>
     </div>
@@ -95,12 +96,15 @@
     <div class="row">
     <div class="col-lg-12">
       <canvas id="canvas" class="d-none"></canvas>
-      <img src="" alt="Your Image" id='test_image_new' hidden>
-  </div>
-    </div>
+      <img src="" alt="Your Image" id='test_image_new'>
+
+              </div>
+              </div>
+    
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <script>
     
+    let base64_image_string = '';
     const fileToUpload = document.getElementById("fileToUpload_new");
     const preview_image = document.getElementById("test_image_new");
 
@@ -113,9 +117,13 @@
 
         base_reader.addEventListener("load", function(){
           preview_image.setAttribute("src", this.result);
+          base64_image_string = this.result;
+          console.log(this.result);
         });
 
         base_reader.readAsDataURL(selected_file);
+        
+        console.log(selected_file);
       }
     });
 
@@ -126,6 +134,8 @@ document.getElementById("snapshot_button").onclick=async ()=>{
 myDiv.id = 'webcam_new';
 myDiv.setAttribute("autoplay", "");
 myDiv.setAttribute("playsinline", "");
+myDiv.style.opacity = "0";
+
 
 //Finally, append the element to the HTML body
 document.body.appendChild(myDiv);
@@ -137,7 +147,18 @@ document.body.appendChild(myDiv);
         let picture = webcam.snap();
         document.getElementById("test_image_new").src = picture;
         myDiv.remove();
+        console.log(picture);
+        base64_image_string = picture;
   }
+
+  $('#submit_new').click(function() {
+    jQuery.ajax({
+                type: "POST",
+                url: '../Emognition/upload.php',
+                dataType: 'json',
+                data: { functionname: 'upload_to_server', arguments: ['upload_image', base64_image_string] },
+
+}) });
   
         
     </script>
@@ -169,7 +190,7 @@ document.body.appendChild(myDiv);
 
   <!-- End of implementation -->
 
-    <!-- <div class="modal fade" id="downlaodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="downlaodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -229,15 +250,16 @@ document.body.appendChild(myDiv);
         </div>
       </div>
 
-    </div> -->
-      
-    <button onclick="myFunction()">Click me</button>
+    </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" 
-  crossorigin="anonymous"></scrip>
+  crossorigin="anonymous"></script>
+
   <script src="assets/js/index.js"></script>
-  <script src="assets/js/image_detection.js"></script>
+
+
+<script src="assets/js/image_detection.js"></script>
 <script>
   
 
