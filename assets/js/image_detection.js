@@ -3,7 +3,7 @@ Promise.all([
     faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
     faceapi.nets.faceExpressionNet.loadFromUri('assets/models'),
-]).then(detectPic2()).then(startVideo());
+]).then(detectPic2());
 
 let imagesrc = "";
 
@@ -75,7 +75,7 @@ async function detectPic2() {
 }
 
 // wether user want to check an image or his/her face
-$('#scrnsht').onClick(function () {
+$('#scrnsht').click(function () {
     screenshot();
 })
 
