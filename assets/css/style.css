@@ -6,3 +6,8 @@ img{
   width: 535px;
   height: 535px;
 }
+
+canvas{
+  position: absolute;
+  
+}

@@ -10,11 +10,9 @@
   integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
   crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/style.scss">
-  <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="assets/js/face-api.min.js"></script>
-  <!-- <script defer src="assets/js/face_detection.js"></script> -->
+  // <!-- <script defer src="assets/js/face_detection.js"></script> -->
 
   <title>Emognition</title>
 </head>
@@ -92,7 +90,7 @@
     <div class="row">
     <div class="col-lg-12">
       <canvas id="canvas" class="d-none"></canvas>
-      <img src="" alt="Your Image" id='test_image_new'>
+      <img src="" alt="Your Image" id='test_image_new' hidden>
   </div>
     </div>
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
@@ -166,7 +164,7 @@ document.body.appendChild(myDiv);
 
   <!-- End of implementation -->
 
-    <div class="modal fade" id="downlaodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="downlaodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -226,28 +224,15 @@ document.body.appendChild(myDiv);
         </div>
       </div>
 
-    </div>
+    </div> -->
       
     <button onclick="myFunction()">Click me</button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" 
   crossorigin="anonymous"></scrip>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></scrip>
   <script src="assets/js/index.js"></script>
-<!-- include jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-<!-- include FilePond library -->
-<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-<!-- include FilePond plugins -->
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-
-<!-- include FilePond jQuery adapter -->
-<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-
-<script src="assets/js/image_detection.js"></script>
+  <script src="assets/js/image_detection.js"></script>
 <script>
   
 
