@@ -10,7 +10,7 @@ function upload_to_server($image_name, $base64_string)
   $target_dir = "./assets/img/upload/" . $image_name . $current_date . '_' . $current_time . '.' . $extension;
   file_put_contents($target_dir, file_get_contents($base64_string));
 
-  return null;
+  return $target_dir;
 }
 
 if( !isset($_POST['functionname']) ) { $aResult['error'] = 'No function name!'; }
@@ -36,6 +36,6 @@ if( !isset($aResult['error']) ) {
            $aResult['error'] = 'Not found function '.$_POST['functionname'].'!';
            break;
     }
-
+    echo json_encode($aResult);
 }
 ?>

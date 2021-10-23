@@ -1,18 +1,13 @@
-Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('assets/models'),
-]).then(detectPic2());
-
-let imagesrc = "";
-
-let imageDetectionSelection = "";
-
 function detectPic(image_name) {
-
     imagesrc = "assets/img/" + image_name;
-    $('img').attr("src", imagesrc);
+    $('img').attr("src", image_name);
+    Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('assets/models'),
+    ]).then(detectPic2(image_name));
+
     // document.getElementById("temp_image").src = imagesrc;
     // var source_image = $('#temp_image').attr('src') ;
     // var new_source = $('#temp_image').attr('src').replace(source_image, 'assets/img/' + image_name);
@@ -21,16 +16,16 @@ function detectPic(image_name) {
     // document.getElementById("temp_image").src="assets/img/" + image_name;
 }
 
-async function detectPic2() {
-    const detection = document.getElementById("temp_image");
-    var canvas = await faceapi.createCanvasFromMedia(detection);
+async function detectPic2(image_name) {
+    const img = await loadImage(image_name);
+    var canvas = await faceapi.createCanvasFromMedia(img);
 
     const b = document.getElementById("Webcam");
     b.append(canvas);
     var detectionInterval = setInterval(async () => {
-        const displaySize = { width: detection.width, height: detection.height }
+        const displaySize = { width: img.width, height: img.height }
         faceapi.matchDimensions(canvas, displaySize)
-        const detections = await faceapi.detectAllFaces(detection,
+        const detections = await faceapi.detectAllFaces(img,
             new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height)
@@ -44,7 +39,7 @@ async function detectPic2() {
             console.log(detectionBox);
             var canvas2;
 
-            canvas2 = faceapi.createCanvasFromMedia(detection);
+            canvas2 = faceapi.createCanvasFromMedia(img);
             faceapi.matchDimensions(canvas2, displaySize);
             // var ctx = canvas2.getContext("2d")
             // ctx.rect(detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height);
@@ -55,14 +50,14 @@ async function detectPic2() {
                 type: "POST",
                 url: '../Emognition/edit_pic.php',
                 dataType: 'json',
-                data: { functionname: 'test_func', arguments: [detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height, expression, imagesrc] },
+                data: { functionname: 'test_func', arguments: [detectionBox.x, detectionBox.y, detectionBox.width, detectionBox.height, expression, image_name] },
 
                 success: function (obj, textstatus) {
                     if (!('error' in obj)) {
                         var yourVariable = obj.result;
                         console.log(yourVariable);
                         // $('#temp_image').attr(src, yourVariable);
-                        $('img').attr("src", yourVariable);
+                        $('#temp_image').attr("src", yourVariable);
                         $('a').attr("href", yourVariable)
                     }
                     else {
@@ -94,3 +89,7 @@ function sortingExpressions(a, b) {
         return (a[1] > b[1]) ? -1 : 1;
     }
 }
+
+function loadImage(url) {
+    return new Promise(r => { let i = new Image(); i.onload = (() => r(i)); i.src = url; });
+  }

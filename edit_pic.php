@@ -64,8 +64,7 @@
         
         $cutted_pic = imagecreateTrueColor($width, $height);
         imagecopyresampled($cutted_pic, $img, 0,0,0,0, $width, $height, $oldwidth, $oldheight);
-        imagepng($cutted_pic, 'assets/img/output_test.png');
-
+        
         $cutted_emoji = imagecreate($box_width, $box_height);
         imagecopyresampled($cutted_emoji, $png, 0,0, 0, 0, $box_width, $box_height, $newwidth, $newheight);
 
@@ -74,9 +73,11 @@
         $current_date = date("d.m.y");
         $current_time = date("H:i:s");
 
-        $manipulated_pic_path = 'assets/img/output/' . pathinfo($pictureSource, PATHINFO_FILENAME) . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
 
-        imagewebp($cutted_pic, $manipulated_pic_path);
+
+        //$manipulated_pic_path = 'assets/img/output/' . pathinfo($pictureSource, PATHINFO_FILENAME) . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
+        $manipulated_pic_path = $pictureSource . '_' . $current_date . '_' . $current_time . '_manipulated.png';
+        imagepng($cutted_pic, $manipulated_pic_path);
         
         return $manipulated_pic_path;
     }

@@ -106,7 +106,7 @@
     
     let base64_image_string = '';
     const fileToUpload = document.getElementById("fileToUpload_new");
-    const preview_image = document.getElementById("test_image_new");
+    const preview_image = document.getElementById("temp_image");
 
     fileToUpload.addEventListener("change", function(){
       const selected_file = this.files[0];
@@ -145,8 +145,9 @@ document.body.appendChild(myDiv);
       webcam.start()
         await new Promise(r => setTimeout(r, 2000));
         let picture = webcam.snap();
-        $('img').attr("src", picture);
+        document.getElementById("temp_image").src = picture;
         myDiv.remove();
+        webcam.stop();
         console.log(picture);
         base64_image_string = picture;
   }
@@ -157,7 +158,18 @@ document.body.appendChild(myDiv);
                 url: '../Emognition/upload.php',
                 dataType: 'json',
                 data: { functionname: 'upload_to_server', arguments: ['upload_image', base64_image_string] },
-
+                success: function (obj, textstatus) {
+                    if (!('error' in obj)) {
+                        var yourVariable = obj.result;
+                        console.log(obj.result);
+                        // $('#temp_image').attr(src, yourVariable);
+                        detectPic(yourVariable);
+                        $('a').attr("href", yourVariable)
+                    }
+                    else {
+                        console.log(obj.error);
+                    }
+                }
 }) });
   
         
@@ -305,9 +317,6 @@ document.body.appendChild(myDiv);
           echo "Sorry, there was an error uploading your file.";
         }
       }
-
-  
-  
 ?>
 
 
