@@ -33,15 +33,9 @@
             </div>
         </div>
 
-<<<<<<< HEAD
         <div class="container my-5">
       <div class="form-group my-2 shadow">
         <input type="file" name="image_upload" id="image_upload" class="form-control gap-2" accept=".png, .jpeg, .gif, webp">
-=======
-        <div class="row">
-        <div class="form-group my-2 shadow">
-              <input type="file" name="image_upload" id="image_upload" class="form-control gap-2" accept=".png, .jpeg, .gif, .webp">
->>>>>>> 6acb82ef6b8b899d01cc5f8e7be17c89f92b272f
       </div>
       <div class="row">
         <div class="col-lg-4 my-2">
