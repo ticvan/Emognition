@@ -1,3 +1,21 @@
+function showVideo(expression){
+    console.log(expression);
+    $.getJSON("assets/json/videos.json").done(function(videos) {
+        console.log(videos[expression][Math.floor(Math.random() * 2)].url)
+
+        $('#infoMessages').html('<div class="alert alert-info" role="alert">'+
+        'Video suggestion on your <a href="'+videos[expression][Math.floor(Math.random() * 2)].url+'" class="alert-link">mood</a>.'+
+      '</div>');
+    }
+  
+      )
+      .fail(function (error) {
+        console.log("Request Failed: " + error);
+      })
+  
+    return;
+}
+
 function load_face_api(image_source)
 {
     read_expressions(image_source);
@@ -11,15 +29,14 @@ async function read_expressions(image_source)
     //landmarks is needed to get the positon of the face and expression is needed for the expression
     //TinyFaceDetection is a Model used for Faceapi
     const detections = await faceapi.detectAllFaces(image, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-
+    console.log(detections);
     //check if a face was found
-    if(detections.length > 0)
+    if(detections !== undefined)
     {
         //gets the box of where the face was detected
         let detectionBox = detections[0].detection.box;
         //get the expression of the face
         let expression = detectExpression(detections[0].expressions);
-        
         //ajax call to edit the picure
         jQuery.ajax({
             type: "POST",
@@ -35,6 +52,8 @@ async function read_expressions(image_source)
                     $('#image_preview').attr("src", edited_image);
                     //set href for download
                     $('a').attr("href", edited_image);
+                    showVideo(expression);
+                    $('#infoMessages').html('<div></div>');
                 }
                 else 
                 {
@@ -44,7 +63,7 @@ async function read_expressions(image_source)
         })
     }
     else{
-        alert("Kein Gesicht gefunden! Bitte stellen Sie sicher, dass ein Gesicht erkannt werden kann und probieren Sie es erneut :)");
+        $('#infoMessages').html('<div class="alert alert-danger" role="alert">Kein Gesicht gefunden! Bitte stellen Sie sicher, dass ein Gesicht erkannt werden kann und probieren Sie es erneut :)</div>');
     }
 }
 

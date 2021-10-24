@@ -42,5 +42,38 @@
         {
             "url": "https://www.youtube.com/watch?v=YW6scqlaAEUn"
         }
+    ],
+    "angry": [
+        {
+            "url": "https://www.youtube.com/watch?v=z2lAO54bP38"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=3018MySNqp0"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=MABiJquXszM"
+        }
+    ],
+    "fearful": [
+        {
+            "url": "https://www.youtube.com/watch?v=FxK-861KuxE"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=qIsgdOVGA04"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=IIEgtIEDfB0"
+        }
+    ],
+    "disgusted": [
+        {
+            "url": "https://www.youtube.com/watch?v=-oZ5Vsfy0n8"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=hQUP9xwmrxA"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=YW6scqlaAEUn"
+        }
     ]
 }
