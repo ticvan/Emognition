@@ -24,7 +24,7 @@
 
         imagecopy($base_image, $cutted_emotion_image, $box_pos_x , $box_pos_y, 0, 0, $box_width, $box_height);
 
-        $current_date = date("d.m.y");
+        $current_date = date("d-m-y");
         $current_time = date("H:i:s");
         $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.png';
         

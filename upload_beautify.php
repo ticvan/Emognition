@@ -4,7 +4,7 @@
     $aResult = array();
 function upload_to_server($base64_string)
 {
-        $current_date = date("d.m.y");
+        $current_date = date("d-m-y");
         $current_time = date("H:i:s");
         //gets the extension of the image from base64 string
         $extension = explode('/', mime_content_type($base64_string))[1];
@@ -15,8 +15,8 @@ function upload_to_server($base64_string)
 
         //image manipulation to cut to right size
         list($old_image_width, $old_image_height) = getimagesize($image_path);
-        $width = 535;
-        $height = 535;
+        $width = 720;
+        $height = 500;
 
         $cutted_image = imagecreatetruecolor($width, $height);
         
@@ -36,7 +36,7 @@ function upload_to_server($base64_string)
                 $img = imagecreatefromwebp($image_path);
                 break;
             default:
-            $aResult['error'] = 'Das Bild hat das falsche Format! Bitte wählen sie ein richtiges Format aus';
+            return 'Das Bild hat das falsche Format! Bitte wählen sie ein richtiges Format aus!';
                 break;
         }
 
@@ -88,7 +88,7 @@ function upload_to_server($base64_string)
                }
                else 
                {
-                $aResult['result']  = upload_to_server($_POST['arguments'][0]);
+                 $aResult['result']  = upload_to_server($_POST['arguments'][0]);
                }
                break;
     
