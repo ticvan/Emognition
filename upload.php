@@ -4,13 +4,14 @@
     $aResult = array();
 function upload_to_server($image_name, $base64_string)
 {
-  $current_date = date("d.m.y");
-      $current_time = date("H:i:s");
-      $extension = explode('/', mime_content_type($base64_string))[1];
-  $target_dir = "./assets/img/upload/" . $image_name . $current_date . '_' . $current_time . '.' . $extension;
-  file_put_contents($target_dir, file_get_contents($base64_string));
+    //TODO CUT IMAGE
+    $current_date = date("d.m.y");
+    $current_time = date("H:i:s");
+    $extension = explode('/', mime_content_type($base64_string))[1];
+    $target_dir = "./assets/img/upload/" . $image_name . $current_date . '_' . $current_time . '.' . $extension;
+    file_put_contents($target_dir, file_get_contents($base64_string));
 
-  return $target_dir;
+    return $target_dir;
 }
 
 if( !isset($_POST['functionname']) ) { $aResult['error'] = 'No function name!'; }

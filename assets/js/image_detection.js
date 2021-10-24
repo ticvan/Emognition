@@ -1,6 +1,5 @@
 function detectPic(image_name) {
-    imagesrc = "assets/img/" + image_name;
-    $('img').attr("src", image_name);
+    $('#temp_image').attr("src", image_name);
     Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),

@@ -122,8 +122,6 @@
         });
 
         base_reader.readAsDataURL(selected_file);
-        
-        console.log(selected_file);
       }
     });
 
@@ -148,7 +146,6 @@ document.body.appendChild(myDiv);
         document.getElementById("temp_image").src = picture;
         myDiv.remove();
         webcam.stop();
-        console.log(picture);
         base64_image_string = picture;
   }
 
@@ -164,7 +161,6 @@ document.body.appendChild(myDiv);
                         console.log(obj.result);
                         // $('#temp_image').attr(src, yourVariable);
                         detectPic(yourVariable);
-                        $('a').attr("href", yourVariable)
                     }
                     else {
                         console.log(obj.error);
@@ -174,32 +170,6 @@ document.body.appendChild(myDiv);
   
         
     </script>
-    <!-- Faceapi Implementation -->
-
-    <!-- <div class="container">
-
-  
-      <div class="row">
-          <div id="Webcam" class="col-12 d-flex justify-content-center">
-              <video id="video" width="720" height="500" autoplay muted></video>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-              <button id="btnScreenshot">Take a Screenshot!</button>
-          </div>
-      </div>
-  
-      <div class="row">
-          <div class="col-12 d-flex justify-content-center">
-              <img id="img">
-          </div>
-      </div>
-  </div> -->
-
-
-
-
   <!-- End of implementation -->
 
     <div class="modal fade" id="downlaodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -275,7 +245,7 @@ document.body.appendChild(myDiv);
 <script>
   
 
-  $('#submit').click(function() {
+  /* $('#submit').click(function() {
     $.ajax({
         url: '',
         type: 'POST',
@@ -283,10 +253,10 @@ document.body.appendChild(myDiv);
             alert('Email Sent');
         }               
     });
-});
+}); */
 </script>
 <?php
-      $target_dir = "./assets/img/";
+     /*  $target_dir = "./assets/img/";
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
       $uploadOk = 1;
       $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -316,7 +286,7 @@ document.body.appendChild(myDiv);
         {
           echo "Sorry, there was an error uploading your file.";
         }
-      }
+      } */
 ?>
 
 
