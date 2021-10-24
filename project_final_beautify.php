@@ -49,7 +49,7 @@
             <a class="btn shadow col-12 btn-success btn-block py-3" href="" id="downloadPic" download="Mood.webp">Download</a>
           </div>
           <div class="col-lg-4 my-2">
-            <input type="submit" class="btn shadow col-12 btn-dark btn-block py-3" value="Analyse beginnen" name="uploadImage" id='btn_upload_image'>
+            <input type="submit" class="btn shadow col-12 btn-dark btn-block py-3" value="Analyze" name="uploadImage" id='btn_upload_image'>
           </div>
       </div>
     </div>
