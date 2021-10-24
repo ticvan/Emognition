@@ -12,11 +12,11 @@
         $base_emotion_image = imagecreatefrompng("assets/img/Emotions/" . $emotion . ".png");
         
         //gets width and height from base image
-        $base_emotion_width  = imagesx($emotion_image);
-        $base_emotion_height = imagesy($emotion_image);
+        $base_emotion_width  = imagesx($base_emotion_image);
+        $base_emotion_height = imagesy($base_emotion_image);
 
         //cuts emoji pic to fit it on the head
-        $cutted_emotion_image = imagecreateTrueColor($box_width, $box_height);
+        $cutted_emotion_image = imagecreate($box_width, $box_height);
         imagecopyresampled($cutted_emotion_image, $base_emotion_image, 0, 0, 0, 0, $box_width, $box_height, $base_emotion_width, $base_emotion_height);
 
         //creates gd library object from picturesource
@@ -24,7 +24,7 @@
 
         imagecopy($base_image, $cutted_emotion_image, $box_pos_x , $box_pos_y, 0, 0, $box_width, $box_height);
 
-        $current_date = date("d.m.y");
+        $current_date = date("d-m-y");
         $current_time = date("H:i:s");
         $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.png';
         
