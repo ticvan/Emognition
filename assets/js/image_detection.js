@@ -1,5 +1,6 @@
 function detectPic(image_name) {
-    $('#temp_image').attr("src", image_name);
+    imagesrc = "assets/img/" + image_name;
+    $('img').attr("src", image_name);
     Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
@@ -56,7 +57,7 @@ async function detectPic2(image_name) {
                         var yourVariable = obj.result;
                         console.log(yourVariable);
                         // $('#temp_image').attr(src, yourVariable);
-                        $('#temp_image').attr("src", yourVariable);
+                        $('img').attr("src", yourVariable);
                         $('a').attr("href", yourVariable)
                     }
                     else {

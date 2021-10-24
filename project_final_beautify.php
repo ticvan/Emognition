@@ -57,8 +57,16 @@
     </div>
         </div>
     </div>
-
     <canvas class="d-none" id="webcam_canvas"></canvas>
+    <script>
+            Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('assets/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('assets/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('assets/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('assets/models')
+    ])
+    </script>
+    <script src="assets/js/image_detection_beautify.js"></script>
     <script src="assets/js/basic_functions.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
   crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="assets/js/face-api.min.js"></script>
+  <script defer src="assets/js/face-api.min.js"></script>
   <!-- <script defer src="assets/js/face_detection.js"></script> -->
 
   

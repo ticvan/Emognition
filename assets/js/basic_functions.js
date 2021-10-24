@@ -57,13 +57,14 @@ document.getElementById("btn_upload_image").onclick = function()
         {
             if(!('error' in obj))
             {
+                //wenn the array error is empty starting to detect emotions of the image
                 var image_path = obj.result;
                 console.log(image_path);
-                detectPic(image_path);
+                load_face_api(image_path);
             }
             else
             {
-                console.log(obj.error);
+                alert(obj.error);
             }
         }
     })
