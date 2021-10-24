@@ -32,7 +32,14 @@ document.getElementById("snapshot_button").onclick = async () => {
   const webcam = new Webcam(webcam_display, "user", canvasElement);
 
   //starts webcam and waits 2 seconds to be really sure that the webcam is active
-  webcam.start();
+  webcam
+    .start()
+    .then((result) => {})
+    .catch((err) => {
+      $("#infoMessages").html(
+        '<div class="alert alert-danger" role="alert">There was no camera detected :)</div>'
+      );
+    });
   await new Promise((start_up) => setTimeout(start_up, 2000));
 
   //creates a snapshot and displays to the site
