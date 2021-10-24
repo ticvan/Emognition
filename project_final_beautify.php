@@ -30,18 +30,12 @@
                     </div>
                     <figcaption class="figure-caption">Facecam or uploaded Image</figcaption>
                 </figure>
-                <figure class="col-5 mx-4 figure">
-                    <div class="responsive-video shadow figure-img img-fluid rounded-3">
-                        <iframe src="https://www.youtube.com/embed/EIm4HvDgQCM" frameborder="0" height="300" width="100%" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-                    <figcaption class="figure-caption">youtube video shown after api recognized face</figcaption>
-                </figure>
             </div>
         </div>
 
-        <div class="row">
-        <div class="form-group my-2 shadow">
-              <input type="file" name="image_upload" id="image_upload" class="form-control gap-2" accept=".png, .jpeg, .gif, webp">
+        <div class="container my-5">
+      <div class="form-group my-2 shadow">
+        <input type="file" name="image_upload" id="image_upload" class="form-control gap-2" accept=".png, .jpeg, .gif, webp">
       </div>
       <div class="row">
         <div class="col-lg-4 my-2">
