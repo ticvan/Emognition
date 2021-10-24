@@ -28,6 +28,7 @@
         $current_time = date("H:i:s");
         $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.png';
         
+        //creates image on server
         imagepng($base_image, $manipulated_pic_path);
 
         return $manipulated_pic_path;
