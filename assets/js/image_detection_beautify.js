@@ -29,11 +29,12 @@ async function read_expressions(image_source)
     //landmarks is needed to get the positon of the face and expression is needed for the expression
     //TinyFaceDetection is a Model used for Faceapi
     const detections = await faceapi.detectAllFaces(image, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-    console.log(detections);
+            //gets the box of where the face was detected
+    let detection = detections[0];
+    
     //check if a face was found
-    if(detections !== undefined)
+    if(detection !== undefined)
     {
-        //gets the box of where the face was detected
         let detectionBox = detections[0].detection.box;
         //get the expression of the face
         let expression = detectExpression(detections[0].expressions);
@@ -62,7 +63,7 @@ async function read_expressions(image_source)
         })
     }
     else{
-        $('#infoMessages').html('<div class="alert alert-danger" role="alert">Kein Gesicht gefunden! Bitte stellen Sie sicher, dass ein Gesicht erkannt werden kann und probieren Sie es erneut :)</div>');
+        $('#infoMessages').html('<div class="alert alert-danger" role="alert">There was no face detected! Please try again! :)</div>');
     }
 }
 

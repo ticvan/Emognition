@@ -31,6 +31,11 @@
         //creates image on server
         imagewebp($base_image, $manipulated_pic_path);
 
+        //destroy gd library objects
+        imagedestroy($base_emotion_image);
+        imagedestroy($cutted_emotion_image);
+        imagedestroy($base_image);
+
         return $manipulated_pic_path;
     }
 

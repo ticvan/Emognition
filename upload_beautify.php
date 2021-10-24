@@ -36,8 +36,9 @@ function upload_to_server($base64_string)
                 $img = imagecreatefromwebp($image_path);
                 break;
             default:
-            return 'Das Bild hat das falsche Format! Bitte wählen sie ein richtiges Format aus!';
-                break;
+            $aResult["error"] = 'The image has the wrong format! Please select a valid image!';
+            return null;
+            break;
         }
 
         //flips the orientation of the image if it's flipped
@@ -69,7 +70,11 @@ function upload_to_server($base64_string)
         //deletes the old image
         unlink($image_path);
 
-        //returns the path of the manipulated image
+    //destroy gd library objects
+    imagedestroy($cutted_image);
+    imagedestroy($img);
+    
+    //returns the path of the manipulated image
         return $manipluated_image_path;
     }
     

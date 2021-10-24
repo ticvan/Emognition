@@ -48,24 +48,34 @@ document.getElementById("snapshot_button").onclick = async () =>
 
 document.getElementById("btn_upload_image").onclick = function()
 {
-    jQuery.ajax({
-        type: "POST",
-        url: "../Emognition/upload_beautify.php",
-        dataType: "json",
-        data: {functionname: "upload_image_to_server", arguments: [base64_image_string]},
-        success: function(obj, textstatus)
-        {
-            if(!('error' in obj))
+    var stringLength = base64_image_string.length;
+    var sizeInBytes = 4 * Math.ceil((stringLength / 3))*0.5624896334383812;
+    var sizeInKb=sizeInBytes/1000;
+
+    if(sizeInKb > 2000)
+    {
+        $('#infoMessages').html('<div class="alert alert-danger" role="alert">The file is too big! Please select another file!</div>');
+    }
+    else
+    {
+        jQuery.ajax({
+            type: "POST",
+            url: "../Emognition/upload_beautify.php",
+            dataType: "json",
+            data: {functionname: "upload_image_to_server", arguments: [base64_image_string]},
+            success: function(obj, textstatus)
             {
-                //wenn the array error is empty starting to detect emotions of the image
-                var image_path = obj.result;
-                console.log(image_path);
-                load_face_api(image_path);
+                if(!('error' in obj))
+                {
+                    //wenn the array error is empty starting to detect emotions of the image
+                    var image_path = obj.result;
+                    load_face_api(image_path);
+                }
+                else
+                {
+                    alert(obj.error);
+                }
             }
-            else
-            {
-                alert(obj.error);
-            }
-        }
-    })
+        })
+    }
 }
