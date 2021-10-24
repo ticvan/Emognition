@@ -1,6 +1,79 @@
 {
-    "video": {
-        "url" : "blaablabalbalb",
-        "expression": "happy"
-    }
+    "happy": [
+        {
+            "url": "https://www.youtube.com/watch?v=ErIL2XUN2lg"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=DtbrB1IAgM0&t=1571s"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=iungnszzyNE"
+        }
+    ],
+    "sad": [
+        {
+            "url": "https://www.youtube.com/watch?v=z2lAO54bP38"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=3018MySNqp0"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=MABiJquXszM"
+        }
+    ],
+    "surprised": [
+        {
+            "url": "https://www.youtube.com/watch?v=FxK-861KuxE"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=qIsgdOVGA04"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=IIEgtIEDfB0"
+        }
+    ],
+    "neutral": [
+        {
+            "url": "https://www.youtube.com/watch?v=-oZ5Vsfy0n8"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=hQUP9xwmrxA"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=YW6scqlaAEUn"
+        }
+    ],
+    "angry": [
+        {
+            "url": "https://www.youtube.com/watch?v=z2lAO54bP38"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=3018MySNqp0"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=MABiJquXszM"
+        }
+    ],
+    "fearful": [
+        {
+            "url": "https://www.youtube.com/watch?v=FxK-861KuxE"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=qIsgdOVGA04"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=IIEgtIEDfB0"
+        }
+    ],
+    "disgusted": [
+        {
+            "url": "https://www.youtube.com/watch?v=-oZ5Vsfy0n8"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=hQUP9xwmrxA"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=YW6scqlaAEUn"
+        }
+    ]
 }
