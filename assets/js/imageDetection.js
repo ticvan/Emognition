@@ -44,7 +44,7 @@ async function read_expressions(image_source) {
     //ajax call to edit the picure
     jQuery.ajax({
       type: "POST",
-      url: "../Emognition/edit_image_beautify.php",
+      url: "../Emognition/editImage.php",
       dataType: "json",
       data: {
         functionname: "edit_image",

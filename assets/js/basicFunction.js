@@ -56,7 +56,7 @@ document.getElementById("btn_upload_image").onclick = function () {
   } else {
     jQuery.ajax({
       type: "POST",
-      url: "../Emognition/upload_beautify.php",
+      url: "../Emognition/upload.php",
       dataType: "json",
       data: {
         functionname: "upload_image_to_server",

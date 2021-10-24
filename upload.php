@@ -10,7 +10,7 @@ function upload_to_server($base64_string)
         $extension = explode('/', mime_content_type($base64_string))[1];
         
         //uploads image to server 
-        $image_path = "./assets/img/upload/" . uniqid() . '_'. $current_date . '_' . $current_time . '.' . $extension;
+        $image_path = "./../Emognition/assets/img/upload/" . uniqid() . '_'. $current_date . '_' . $current_time . '.' . $extension;
         file_put_contents($image_path, file_get_contents($base64_string));
 
         //image manipulation to cut to right size
@@ -62,7 +62,7 @@ function upload_to_server($base64_string)
         imagecopyresampled($cutted_image, $img, 0,0,0,0, $width, $height, $old_image_width, $old_image_height);
         
         //path for the maniplulated image
-        $manipluated_image_path = "./assets/img/upload/" . uniqid() . '_'. $current_date . '_' . $current_time . '.png';
+        $manipluated_image_path = "./../Emognition/assets/img/upload/" . uniqid() . '_'. $current_date . '_' . $current_time . '.png';
         
         //saves the image on the server
         imagepng($cutted_image, $manipluated_image_path);

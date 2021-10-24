@@ -9,7 +9,7 @@
     function edit_image($box_pos_x, $box_pos_y, $box_width, $box_height, $emotion, $pictureSource)
     {
         //create gd library object with the emotion
-        $base_emotion_image = imagecreatefrompng("assets/img/Emotions/" . $emotion . ".png");
+        $base_emotion_image = imagecreatefrompng("../Emognition/assets/img/Emotions/" . $emotion . ".png");
         
         //gets width and height from base image
         $base_emotion_width  = imagesx($base_emotion_image);
@@ -26,7 +26,7 @@
 
         $current_date = date("d-m-y");
         $current_time = date("H:i:s");
-        $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
+        $manipulated_pic_path = '../Emognition/assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
         
         //creates image on server
         imagewebp($base_image, $manipulated_pic_path);
