@@ -34,7 +34,6 @@
                     <div id="webcam" class="d-flex justify-content-center">
                         <img src="assets/img/Portrait_Placeholder.png" alt="Preview vom Bild" id="image_preview">
                     </div>
-                    <figcaption class="figure-caption">Facecam or uploaded Image</figcaption>
                 </figure>
             </div>
         </div>
