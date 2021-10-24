@@ -54,7 +54,6 @@ async function read_expressions(image_source)
                     //set href for download
                     $('a').attr("href", edited_image);
                     showVideo(expression);
-                    $('#infoMessages').html('<div></div>');
                 }
                 else 
                 {

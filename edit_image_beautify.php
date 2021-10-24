@@ -26,10 +26,10 @@
 
         $current_date = date("d-m-y");
         $current_time = date("H:i:s");
-        $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.png';
+        $manipulated_pic_path = 'assets/img/output/' . uniqid() . '_' . $current_date . '_' . $current_time . '_manipulated.webp';
         
         //creates image on server
-        imagepng($base_image, $manipulated_pic_path);
+        imagewebp($base_image, $manipulated_pic_path);
 
         //destroy gd library objects
         imagedestroy($base_emotion_image);

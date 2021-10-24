@@ -70,12 +70,11 @@ function upload_to_server($base64_string)
         //deletes the old image
         unlink($image_path);
 
-        //destroy gd library objects
-        imagedestroy($cutted_image);
-        imagedestroy($img);
-
-
-        //returns the path of the manipulated image
+    //destroy gd library objects
+    imagedestroy($cutted_image);
+    imagedestroy($img);
+    
+    //returns the path of the manipulated image
         return $manipluated_image_path;
     }
     
@@ -92,7 +91,7 @@ function upload_to_server($base64_string)
                {
                    $aResult['error'] = 'Error in arguments!';
                }
-               else
+               else 
                {
                  $aResult['result']  = upload_to_server($_POST['arguments'][0]);
                }
@@ -104,6 +103,4 @@ function upload_to_server($base64_string)
         }
         echo json_encode($aResult);
     }
-
-    
 ?>
